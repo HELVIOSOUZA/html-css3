@@ -24,12 +24,13 @@ header {
     
 }
 header > h1 {
-    border: 1px dotted black;
-    flex: 0 0 200px;
+    /*border: 1px dotted black;*/
+    /*flex: 0 0 200px; -> com h1 maior não ficou bom, tirei o flex resolveu*/
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.505);
     
 }
 header > nav  {
-    border: 1px dotted black;
+    /*border: 1px dotted black;*/
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
