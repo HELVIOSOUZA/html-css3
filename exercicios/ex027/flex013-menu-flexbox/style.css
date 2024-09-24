@@ -16,7 +16,6 @@ header {
     background-color: grey;
     color: white;
     padding: 10px;
-
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -52,7 +51,7 @@ header > nav > a:hover {
 }
 main {
     background-color: white;
-    text-align: justify;
+    text-align: justify;    
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
