@@ -5,7 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Flexbox</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css" media="screen and  (max-width: 735px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and  (max-width: 765px)">
+    <style>
+        body { 
+             font-family: Arial, Helvetica, sans-serif;
+         }
+         table {            
+            justify-content: center;
+             width: 89vw;
+             height: 200px;
+             border-collapse: collapse;
+         }
+         caption {
+             background-color: brown;
+             font-size: 1.5em;
+             color: white;
+             text-shadow: 3px 1px 1px rgb(0, 0, 0);
+             
+             padding: 10px;          
+             
+         }
+         #captiona {
+             background-color: brown;
+             font-size: 1.5em;
+             color: white;
+             text-shadow: 3px 1px 1px rgb(0, 0, 0);
+             
+             padding: 10px;
+             
+             
+         }
+         th,td {
+             border: 1px solid black;
+             padding: 8px;
+             text-align: center;
+             font-weight: bold;
+         }
+         #shadow {
+             text-shadow: 2px 1px 1px white;
+         }
+         .cor2 {
+             background-color: rgba(196, 184, 184, 0.727);
+         }
+         .cor {
+             background-color: rgba(196, 184, 184, 0.727);
+         }
+         </style>
 </head>
 <body>
     <header>
@@ -22,9 +67,62 @@
         </nav>
     </header>
     <main>
-        <h2>Teste Flexbox</h2>
+        <!--<h2>Teste Flexbox</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta architecto sit nam optio assumenda? Placeat laboriosam obcaecati recusandae, sint commodi veritatis eveniet voluptatibus nesciunt laborum quaerat fuga, esse minus perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores deserunt ipsam consequuntur. Laborum reiciendis ratione mollitia nesciunt facere earum voluptas minima obcaecati iste quasi magni nobis voluptatibus, repudiandae enim deserunt.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio suscipit beatae, animi ipsa fugiat odit harum facilis illum alias quia natus? Dignissimos hic iusto fugiat placeat quam reiciendis quae est?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio suscipit beatae, animi ipsa fugiat odit harum facilis illum alias quia natus? Dignissimos hic iusto fugiat placeat quam reiciendis quae est?</p>-->
+        <table>
+            <caption>HORÁRIO DE AULAS</caption>
+           <tr>
+               <td></td>
+               <th id="shadow" class="cor2">Segunda</th>
+               <th id="shadow" class="cor2">Terça</th>
+               <th id="shadow" class="cor2">Quarta</th>
+               <th id="shadow" class="cor2">Quinta</th>
+               <th id="shadow" class="cor2">Sexta</th>
+           </tr>
+           <tr>
+               <td>1º</td>
+               <td class="cor"></td>
+               <td>8º 1</td>
+               <td>9º 2</td>
+               <td>7º 3</td>
+               <td>9º 1</td>
+           </tr>
+           <tr>
+               <td>2º</td>
+               <td>7º 3</td>
+               <td>7º 3</td>
+               <td>9º 1</td>
+               <td>6º 1</td>
+               <td>6º 1</td>
+           </tr>
+           <tr>
+               <td>3º</td>
+               <td>7º 1</td>
+               <td>8º 3</td>
+               <td>7º 1</td>
+               <td>7º 1</td>
+               <td>8º 1</td>
+           </tr>
+           <tr>
+               <td>4º</td>
+               <td>9º 2</td>
+               <td>9º 1</td>
+               <td>8º 1</td>
+               <td>6º 3</td>
+               <td>6º 3</td>
+    
+           </tr>
+           <tr>
+               <td>5º</td>
+               <td>6º 3 </td>
+               <td>6º 1</td>
+               <td>8º 3</td>
+               <td>9º 2</td>
+               <td>8º 3</td>
+               
+            </tr>
+            </table>
     </main>
 </body>
 </html>
