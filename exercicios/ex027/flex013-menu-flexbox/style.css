@@ -49,7 +49,7 @@ header > nav > a:hover {
     color: black;
     transition: background-color .5s;
 }
-main {
+main {    
     background-color: white;
     text-align: justify;    
     margin: 10px;
