@@ -23,10 +23,31 @@
             padding: 20px;
             width: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
+        }
+        .menu {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        .menu a {
+            text-decoration: none;
+            background-color: #8c5b3f;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .menu a:hover {
+            background-color: #a06a51;
         }
         main {
             padding: 20px;
@@ -60,6 +81,12 @@
     <header>
         <h1>Professor Helvio Souza</h1>
         <p>"História: A bússola para navegar pelas opiniões"</p>
+        <div class="menu">
+            <a href="6ano.html">6º Ano</a>
+            <a href="7ano.html">7º Ano</a>
+            <a href="8ano.html">8º Ano</a>
+            <a href="9ano.html">9º Ano</a>
+        </div>
     </header>
     <main>
         <h1>8º Ano</h1>
