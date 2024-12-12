@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+p {
+    text-align: justify;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
