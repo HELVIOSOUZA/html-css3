@@ -2,9 +2,9 @@
 
 div.container {
    
-    border: 3px solid blue;
+    border: 5px solid yellow;
     display: grid;
-    grid-template: 100px 100px 100px / auto auto auto;
+    grid-template: repeat(3, 100px) / repeat(3, auto);
     place-items: stretch normal;
     place-items: normal normal;
     
