@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>9º Ano - 1º</title>
+</head>
+<body>
+   <div class="menu">
+
+</div>
+
+<div class="main">
+<header class="header">Primeira República (1889-1930)</header>
+<button onclick="location.href='index.html'">Voltar</button>
+<div class="card">
+    <p class="score-board">Bem-vindo! Primeiro acesse o PDF sobre <strong>Primeira República no Brasil.</strong></p>
+        <p class="card"><a href="Primeira República no Brasil.pdf" target="_blank">Acessar o PDF</a></p>
+<!--<p><h3 class="quiz-header">Resumo</h3>
+
+      A Primeira República começou em 1889, após a Proclamação da República, que colocou fim à monarquia no Brasil. Nesse período, o país passou a ser governado por presidentes, mas o poder político ficou concentrado nas mãos das elites agrárias, principalmente os grandes fazendeiros.</p>
+<p>A política da época ficou conhecida como “política do café com leite”, pois havia um acordo entre as oligarquias de São Paulo (produtores de café) e Minas Gerais (ligadas à pecuária e ao leite) para se alternarem na presidência.</p>
+<p>Outro aspecto importante foi o coronelismo, sistema em que os grandes proprietários rurais (os “coronéis”) controlavam a população local, influenciando eleições por meio do voto de cabresto, já que o voto era aberto (não secreto) e restrito aos homens alfabetizados.</p>
+<p>A economia era baseada principalmente na exportação do café, que tornou São Paulo muito rico e influente. Ao mesmo tempo, a maioria da população vivia em condições de pobreza e sem participação política.</p>
+<p>Esse período também foi marcado por revoltas sociais, como:</p>
+<ul>
+    <li>Guerra de Canudos</li>
+    <li>Revolta da Vacina</li>
+    <li>Revolta da Chibata</li>
+    <li>Guerra do Contestado</li>
+</ul>
+-->
+</div>
+<title>Primeira República no Brasil (1889–1930)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+
+        /* Barra de Nota Fixa no Topo */
+        .score-board {
+            position: sticky;
+            top: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid #27ae60;
+        }
+
+        header {
+            background-color: #27ae60;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #27ae60;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        .question-block {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .options {
+            margin-top: 15px;
+        }
+
+        /* Estilo das opções igual ao anterior */
+        .option {
+            display: block;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .option:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Cores de Feedback */
+        .correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .wrong {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24;
+        }
+
+        .disabled {
+            pointer-events: none;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: none;
+        }
+
+        #final-result {
+            display: none;
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-restart {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="score-board">
+        <strong>Questões respondidas: <span id="answered-count">0</span>/10</strong> | 
+        <strong>Acertos: <span id="correct-count" style="color: #27ae60;">0</span></strong>
+    </div>
+
+    <header>
+        <h1>Primeira República no Brasil</h1>
+        <p>Resumo e Questionário Interativo</p>
+    </header>
+
+    <div id="quiz-container">
+        <div class="question-block">
+            <p><strong>1. A Primeira República no Brasil teve início em:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'A Proclamação foi em 1889.')">a) 1822</div>
+                <div class="option" onclick="validar(this, true, 'Correto! 15 de novembro de 1889.')">b) 1889</div>
+                <div class="option" onclick="validar(this, false, '1930 marca o fim desse período.')">c) 1930</div>
+                <div class="option" onclick="validar(this, false, '1964 foi o golpe militar.')">d) 1964</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>2. A política do “café com leite” representava:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Operários não tinham influência no governo.')">a) Aliança entre operários e militares</div>
+                <div class="option" onclick="validar(this, true, 'Correto! São Paulo e Minas Gerais se revezavam.')">b) Alternância entre SP e MG</div>
+                <div class="option" onclick="validar(this, false, 'O poder era concentrado no Sudeste.')">c) Domínio do Nordeste</div>
+                <div class="option" onclick="validar(this, false, 'A República separou o Estado da Igreja.')">d) União entre Igreja e Estado</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>3. O coronelismo era caracterizado:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'O povo era pressionado, não participava livremente.')">a) Pela participação popular</div>
+                <div class="option" onclick="validar(this, false, 'O voto era aberto (vigiado).')">b) Pelo voto secreto</div>
+                <div class="option" onclick="validar(this, true, 'Isso! Os fazendeiros controlavam o voto local.')">c) Pelo controle político dos grandes fazendeiros</div>
+                <div class="option" onclick="validar(this, false, 'Sindicatos eram perseguidos na época.')">d) Pela liderança dos sindicatos</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>4. O voto de cabresto acontecia porque:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Se fosse secreto, o coronel não poderia vigiar.')">a) O voto era secreto</div>
+                <div class="option" onclick="validar(this, true, 'Exato! A falta de sigilo facilitava a coação.')">b) O voto era aberto e controlado pelos coronéis</div>
+                <div class="option" onclick="validar(this, false, 'Mulheres só passaram a votar em 1932.')">c) Apenas as mulheres votavam</div>
+                <div class="option" onclick="validar(this, false, 'O termo é ligado ao poder agrário civil.')">d) Os militares escolhiam</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>5. A principal base da economia era:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'A indústria cresceu mais tarde.')">a) A indústria</div>
+                <div class="option" onclick="validar(this, false, 'A mineração foi o ciclo anterior.')">b) A mineração</div>
+                <div class="option" onclick="validar(this, true, 'Isso! O café sustentava o país.')">c) A produção de café</div>
+                <div class="option" onclick="validar(this, false, 'O país era voltado para a exportação.')">d) O comércio interno</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>6. Revolta no RJ contra a vacinação obrigatória:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Chibata foi na Marinha.')">a) Revolta da Chibata</div>
+                <div class="option" onclick="validar(this, false, 'Canudos foi no interior da Bahia.')">b) Guerra de Canudos</div>
+                <div class="option" onclick="validar(this, true, 'Correto! O povo se revoltou em 1904.')">c) Revolta da Vacina</div>
+                <div class="option" onclick="validar(this, false, 'Contestado foi no Sul.')">d) Guerra do Contestado</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>7. A Revolta da Chibata foi liderada por:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Fazendeiros eram o grupo no poder.')">a) Fazendeiros</div>
+                <div class="option" onclick="validar(this, false, 'Foi uma revolta na Armada (Marinha).')">b) Soldados do Exército</div>
+                <div class="option" onclick="validar(this, true, 'Isso! Marinheiros contra os maus-tratos.')">c) Marinheiros contra castigos físicos</div>
+                <div class="option" onclick="validar(this, false, 'Operários faziam greves gerais.')">d) Trabalhadores</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>8. A Guerra de Canudos aconteceu:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'No Sul foi o Contestado.')">a) No Sul do Brasil</div>
+                <div class="option" onclick="validar(this, true, 'Correto! No sertão baiano.')">b) No Sertão da Bahia</div>
+                <div class="option" onclick="validar(this, false, 'MG era a terra do leite.')">c) Em Minas Gerais</div>
+                <div class="option" onclick="validar(this, false, 'O Rio era a Capital Federal.')">d) No Rio de Janeiro</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>9. O fim da Primeira República ocorreu com:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Isso deu início à República.')">a) Proclamação da República</div>
+                <div class="option" onclick="validar(this, false, 'Isso foi em 1822.')">b) Independência</div>
+                <div class="option" onclick="validar(this, true, 'Perfeito! Getúlio Vargas tomou o poder.')">c) Revolução de 1930</div>
+                <div class="option" onclick="validar(this, false, 'Estado Novo começou em 1937.')">d) O Estado Novo</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>10. Quem assumiu o poder após 1930?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'O Imperador saiu em 1889.')">a) Dom Pedro II</div>
+                <div class="option" onclick="validar(this, false, 'Foi o primeiro presidente (1889).')">b) Deodoro</div>
+                <div class="option" onclick="validar(this, true, 'Exato! Getúlio Vargas assumiu o governo.')">c) Getúlio Vargas</div>
+                <div class="option" onclick="validar(this, false, 'Foi o segundo presidente.')">d) Floriano Peixoto</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+    </div>
+
+    <div id="final-result">
+        <h2>Resultado Final</h2>
+        <p style="font-size: 1.8em;">Você acertou <span id="final-grade">0</span> de 10!</p>
+        <p id="performance-msg"></p>
+        <button class="btn-restart" onclick="window.location.reload()">Refazer Quiz</button>
+    </div>
+
+    <script>
+        let acertos = 0;
+        let respondidas = 0;
+
+        function validar(elemento, eCorreto, msg) {
+            const bloco = elemento.closest('.question-block');
+            const feedback = bloco.querySelector('.feedback');
+            const opcoes = bloco.querySelectorAll('.option');
+
+            // Trava as opções
+            opcoes.forEach(opt => opt.classList.add('disabled'));
+            respondidas++;
+
+            if (eCorreto) {
+                acertos++;
+                elemento.classList.add('correct');
+                feedback.innerHTML = "✅ " + msg;
+                feedback.style.color = "#28a745";
+            } else {
+                elemento.classList.add('wrong');
+                feedback.innerHTML = "❌ Errado! " + msg;
+                feedback.style.color = "#dc3545";
+            }
+
+            feedback.style.display = "block";
+            
+            // Atualiza placar topo
+            document.getElementById('answered-count').innerText = respondidas;
+            document.getElementById('correct-count').innerText = acertos;
+
+            // Se terminou as 10
+            if (respondidas === 10) {
+                exibirResultado();
+            }
+        }
+
+        function exibirResultado() {
+            const resDiv = document.getElementById('final-result');
+            document.getElementById('final-grade').innerText = acertos;
+            const msg = document.getElementById('performance-msg');
+
+            if (acertos >= 8) msg.innerText = "Excelente! Você é um craque em História! 🏆";
+            else if (acertos >= 5) msg.innerText = "Bom desempenho! Continue estudando. 📖";
+            else msg.innerText = "Vale a pena ler o resumo novamente e tentar de novo! 🙂";
+
+            resDiv.style.display = "block";
+            resDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

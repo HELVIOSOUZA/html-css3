@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origens da Humanidade - Estudo Interativo</title>
+    <style>
+        :root {
+            --primary: #8d4925; /* Terracota */
+            --secondary: #5d4037; /* Marrom Café */
+            --accent: #d4a373; /* Dourado Areia */
+            --bg: #fdfaf5;
+            --text: #3e2723;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+        }
+
+        /* Barra de Nota Fixa */
+        .score-board {
+            position: sticky;
+            top: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid var(--primary);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        section, .question-block {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        ul { margin-left: 20px; }
+        
+        /* Estilo das opções */
+        .option {
+            display: block;
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover { background-color: #fcf3ed; border-color: var(--accent); }
+
+        .correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724; font-weight: bold; }
+        .wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
+        .disabled { pointer-events: none; }
+
+        .feedback { margin-top: 10px; font-weight: bold; display: none; }
+
+        #final-result {
+            display: none;
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-restart {
+            background-color: var(--accent);
+            color: var(--secondary);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="score-board">
+        <strong>Questões respondidas: <span id="answered-count">0</span>/10</strong> | 
+        <strong>Acertos: <span id="correct-count" style="color: var(--primary);">0</span></strong>
+    </div>
+
+    <header>
+        <h1>As Origens da Humanidade</h1>
+        <p>Tempo, Fontes e a Vida na Pré-História</p>
+    </header>
+
+    <section>
+        <h2>1. Tempo e Fontes Históricas</h2>
+        <p>A História estuda as mudanças e permanências nas sociedades. Para isso, usamos o <strong>tempo histórico</strong>, que é diferente do tempo do relógio, pois foca em grandes eventos e transformações sociais.</p>
+        <p>O historiador trabalha como um detetive, usando <strong>Fontes Históricas</strong>:</p>
+        <ul>
+            <li><strong>Materiais:</strong> Objetos, moedas, vasos, construções.</li>
+            <li><strong>Escritas:</strong> Cartas, jornais, leis, livros.</li>
+            <li><strong>Iconográficas:</strong> Pinturas, fotos, mapas.</li>
+            <li><strong>Orais:</strong> Relatos falados, memórias e lendas.</li>
+        </ul>
+
+        <h2>2. Origem do Ser Humano</h2>
+        <p>Segundo a ciência, o berço da humanidade é a <strong>África</strong>, onde foram encontrados os fósseis mais antigos de nossos ancestrais. Ao longo de milhões de anos, os hominídeos evoluíram até o <em>Homo sapiens</em>.</p>
+
+        <h2>3. Período Paleolítico (Pedra Lascada)</h2>
+        <p>É o período mais longo. Os grupos humanos eram <strong>nômades</strong> (não tinham casa fixa) e viviam da caça e coleta. A grande descoberta foi o <strong>domínio do fogo</strong> e as pinturas nas cavernas (<strong>arte rupestre</strong>).</p>
+
+        <h2>4. Período Neolítico (Pedra Polida)</h2>
+        <p>Ocorreu a <strong>Revolução Agrícola</strong>: o homem aprendeu a plantar e a domesticar animais. Com comida garantida, tornaram-se <strong>sedentários</strong> (fixos em um lugar), surgindo as primeiras aldeias.</p>
+    </section>
+
+    <h2 style="text-align: center; border: none;">📝 Teste seu Conhecimento</h2>
+
+    <div id="quiz-container">
+        <div class="question-block">
+            <p><strong>1. Qual a melhor definição para "Tempo Histórico"?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Isso é tempo cronológico.')">a) Segundos e minutos do relógio.</div>
+                <div class="option" onclick="validar(this, true, 'Correto! Foca nas mudanças sociais.')">b) Tempo das mudanças nas sociedades humanas.</div>
+                <div class="option" onclick="validar(this, false, 'Isso é tempo da natureza.')">c) Tempo das estações do ano e colheitas.</div>
+                <div class="option" onclick="validar(this, false, 'Isso é apenas contagem de dias.')">d) Tempo marcado apenas em calendários.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>2. O que é considerado uma "Fonte Histórica"?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Não só livros, mas objetos também.')">a) Apenas livros escritos por historiadores.</div>
+                <div class="option" onclick="validar(this, true, 'Isso! Qualquer rastro do passado humano.')">b) Qualquer vestígio deixado pelos seres humanos.</div>
+                <div class="option" onclick="validar(this, false, 'Fontes podem ser não oficiais também.')">c) Apenas documentos oficiais do governo.</div>
+                <div class="option" onclick="validar(this, false, 'O ser humano deve ter participado.')">d) Somente fósseis de dinossauros.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>3. Um colar indígena antigo é que tipo de fonte?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, true, 'Exato! É um objeto físico.')">a) Fonte Material.</div>
+                <div class="option" onclick="validar(this, false, 'Fontes orais são faladas.')">b) Fonte Oral.</div>
+                <div class="option" onclick="validar(this, false, 'Não há escrita no colar.')">c) Fonte Escrita.</div>
+                <div class="option" onclick="validar(this, false, 'Imaterial é algo que não se toca, como uma dança.')">d) Fonte Imaterial.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>4. Qual continente é o "Berço da Humanidade"?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Lá surgiram civilizações, mas não a espécie.')">a) Europa.</div>
+                <div class="option" onclick="validar(this, false, 'Foi um dos últimos a ser povoado.')">b) América.</div>
+                <div class="option" onclick="validar(this, true, 'Correto! Onde surgiram os primeiros humanos.')">c) África.</div>
+                <div class="option" onclick="validar(this, false, 'Ancestrais migraram para lá depois.')">d) Ásia.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>5. No Paleolítico, os seres humanos eram "nômades". Isso significa que:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Isso é ser sedentário.')">a) Moravam sempre no mesmo lugar.</div>
+                <div class="option" onclick="validar(this, true, 'Perfeito! Mudavam-se em busca de comida.')">b) Mudavam-se constantemente para buscar alimentos.</div>
+                <div class="option" onclick="validar(this, false, 'Eles viviam da caça e coleta.')">c) Viviam apenas da agricultura.</div>
+                <div class="option" onclick="validar(this, false, 'Cidades surgiram no Neolítico.')">d) Construíam grandes cidades de pedra.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>6. Qual descoberta mudou a vida no Paleolítico?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Roda foi no final do Neolítico.')">a) A invenção da roda.</div>
+                <div class="option" onclick="validar(this, true, 'Correto! Proteção, luz e cozimento.')">b) O domínio do fogo.</div>
+                <div class="option" onclick="validar(this, false, 'Escrita marca o fim da Pré-História.')">c) A invenção da escrita.</div>
+                <div class="option" onclick="validar(this, false, 'Metais vieram depois da pedra.')">d) O uso do ferro.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>7. A "Revolução Neolítica" foi marcada por:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Isso já existia no Paleolítico.')">a) Uso exclusivo de cavernas.</div>
+                <div class="option" onclick="validar(this, true, 'Isso! Produzir o próprio alimento.')">b) Agricultura e domesticação de animais.</div>
+                <div class="option" onclick="validar(this, false, 'As ferramentas ficaram mais polidas.')">c) Fim de qualquer tipo de ferramenta.</div>
+                <div class="option" onclick="validar(this, false, 'Computadores são da nossa época!')">d) Criação de computadores de pedra.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>8. Por que o termo "Pré-História" é criticado?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Eles existiam e eram muito ativos.')">a) Porque não existiam humanos na época.</div>
+                <div class="option" onclick="validar(this, true, 'Exato! Povos sem escrita também têm história.')">b) Porque sugere que sem escrita não há história.</div>
+                <div class="option" onclick="validar(this, false, 'O nome é antigo, não as datas.')">c) Porque as datas estão todas erradas.</div>
+                <div class="option" onclick="validar(this, false, 'Foi o período mais longo da humanidade.')">d) Porque foi um período sem importância.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>9. Como se chamam as pinturas feitas em cavernas?</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, false, 'Isso é escrita egípcia.')">a) Hieróglifos.</div>
+                <div class="option" onclick="validar(this, true, 'Correto! Do latim "rupes" (rocha).')">b) Pinturas Rupestres.</div>
+                <div class="option" onclick="validar(this, false, 'Grafite é arte urbana atual.')">c) Grafites pré-históricos.</div>
+                <div class="option" onclick="validar(this, false, 'Pintura a óleo surgiu séculos depois.')">d) Pinturas a óleo.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p><strong>10. O "Sedentarismo" no Neolítico significa:</strong></p>
+            <div class="options">
+                <div class="option" onclick="validar(this, true, 'Isso! Fixar-se graças à agricultura.')">a) Morar em um lugar fixo.</div>
+                <div class="option" onclick="validar(this, false, 'Isso é nomadismo.')">b) Viajar o tempo todo.</div>
+                <div class="option" onclick="validar(this, false, 'Sedentarismo não é sobre preguiça aqui.')">c) Não fazer exercícios físicos.</div>
+                <div class="option" onclick="validar(this, false, 'É um termo de moradia.')">d) Viver apenas em cavernas.</div>
+            </div>
+            <div class="feedback"></div>
+        </div>
+    </div>
+
+    <div id="final-result">
+        <h2>Conclusão da Jornada</h2>
+        <p style="font-size: 1.8em;">Sua pontuação: <span id="final-grade">0</span> de 10!</p>
+        <p id="performance-msg"></p>
+        <button class="btn-restart" onclick="window.location.reload()">Recomeçar Estudo</button>
+    </div>
+
+    <script>
+        let acertos = 0;
+        let respondidas = 0;
+
+        function validar(elemento, eCorreto, msg) {
+            const bloco = elemento.closest('.question-block');
+            const feedback = bloco.querySelector('.feedback');
+            const opcoes = bloco.querySelectorAll('.option');
+
+            opcoes.forEach(opt => opt.classList.add('disabled'));
+            respondidas++;
+
+            if (eCorreto) {
+                acertos++;
+                elemento.classList.add('correct');
+                feedback.innerHTML = "✅ " + msg;
+                feedback.style.color = "#28a745";
+            } else {
+                elemento.classList.add('wrong');
+                feedback.innerHTML = "❌ " + msg;
+                feedback.style.color = "#dc3545";
+            }
+
+            feedback.style.display = "block";
+            document.getElementById('answered-count').innerText = respondidas;
+            document.getElementById('correct-count').innerText = acertos;
+
+            if (respondidas === 10) {
+                setTimeout(() => {
+                    const resDiv = document.getElementById('final-result');
+                    document.getElementById('final-grade').innerText = acertos;
+                    const msgDiv = document.getElementById('performance-msg');
+
+                    if (acertos >= 8) msgDiv.innerText = "Excelente! Você é um verdadeiro arqueólogo! 🏺";
+                    else if (acertos >= 5) msgDiv.innerText = "Bom trabalho! Continue explorando o passado. 🦴";
+                    else msgDiv.innerText = "Que tal ler o resumo e tentar novamente? 📖";
+
+                    resDiv.style.display = "block";
+                    resDiv.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
